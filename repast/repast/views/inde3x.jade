@@ -1,0 +1,29 @@
+﻿html
+  head
+    title 无标题文档
+    link(rel='stylesheet', href='stylesheets/jquery.mobile-1.4.2.min.css')
+    script(src='js/jquery-2.0.2.min.js')
+    script(src='js/jquery.mobile-1.4.2.min.js')
+    script(type='text/javascript', src='js/jquery.js')
+    script
+      $(function(){
+      //登陆
+      //var use="";
+      $("#login").click(function(){
+      $.get("/login",function(data){
+      });
+      });
+      $("#register").click(function(){
+      $.get("/register",function(data){
+      });
+      });
+      });
+  body
+    div(data-role='page')
+      div(data-role='header')
+      div(data-role='content')
+        a( data-role='button', data-transition='slidefade') 登陆
+        a(href='register.html', data-role='button', data-transition='slidefade') 注册
+        a(href='rpindex.html', data-role='button', data-transition='slidefade') 游客
+      div(data-role='footer')
+        h1

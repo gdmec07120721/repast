@@ -1,0 +1,429 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" href="stylesheets/jquery.mobile-1.4.2.min.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/jquery.mobile-1.4.2.min.js"></script>
+<script src="javascripts/calling.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+<!------------------------------------------------index--------------------------------------->
+<div data-role="page" id="index">
+  <div data-role="header" data-theme="b">
+    <h1><img src="images/logo.png"/></h1>
+  </div>
+  <div data-role="content"> <a href="#page" data-role="button" data-transition="slidefade">登陆</a> <a href="#zcregist" data-role="button" data-transition="slidefade">注册</a> <a href="rpindex.html" data-role="button" data-transition="slidefade" id="rpindex">游客</a> </div>
+  <div data-role="footer">
+    <h1></h1>
+  </div>
+</div>
+<!------------------------------------------------注册----------------------------------------->
+<div data-role="page" id="zcregist">
+  <div data-role="header" data-theme="b"><a href="#index" data-role="button" data-icon="arrow-l">返回</a>
+    <h1>注册</h1>
+  </div>
+  <div data-role="content">
+    <form>
+      <fieldset data-role="controlgroup" data-iconpos="right">
+        <legend>选择用户:</legend>
+        <input type="radio" name="radio-choice-w" id="radio-choice-w-6a" value="1" checked="checked">
+        <label for="radio-choice-w-6a">企业用户</label>
+        <input type="radio" name="radio-choice-w" id="radio-choice-w-6b" value="2">
+        <label for="radio-choice-w-6b">个人用户</label>
+      </fieldset>
+      <input type="text" data-clear-btn="true" name="text-3" id="zcusername" placeholder="用户名">
+      <input type="password" data-clear-btn="true" name="text-3" id="zcpassword" placeholder="密码">
+      <input type="password" data-clear-btn="true" name="text-3" id="zcpassword2" placeholder="确认密码">
+    </form>
+    <a data-role="button" data-transition="slidefade" id="regist">注册</a> <a href="#index" data-role="button" data-transition="slidefade" >取消</a> </div>
+  <div data-role="footer">
+    <h1></h1>
+  </div>
+</div>
+<!------------------------------------------------登陆----------------------------------------->
+<div data-role="page" id="page">
+  <div data-role="header" data-theme="b"><a href="#index" data-role="button" data-icon="arrow-l">返回</a>
+    <h1>登陆</h1>
+  </div>
+  <div data-role="content">
+    <form>
+      <fieldset data-role="controlgroup" data-iconpos="right">
+        <legend>选择用户:</legend>
+        <input type="radio" name="radio-choice-w-6" id="radio-choice-w-6a" value="1" checked="checked">
+        <label for="radio-choice-w-6a">企业用户</label>
+        <input type="radio" name="radio-choice-w-6" id="radio-choice-w-6b" value="2">
+        <label for="radio-choice-w-6b">个人用户</label>
+      </fieldset>
+      <input type="text" data-clear-btn="true" name="text-3" id="username" placeholder="用户名">
+      <input type="password" data-clear-btn="true" name="text-3" id="password" placeholder="密码">
+    </form>
+    <a data-role="button" data-transition="slidefade" id="login">双击登陆</a> <a href="#index" data-role="button" data-transition="slidefade" >取消</a> </div>
+  <div data-role="footer">
+    <h1></h1>
+  </div>
+</div>
+<!--------------------------------------------登陆-企业用户------------------------------------->
+<div data-role="page" id="bspage1">
+  <div data-role="header" data-theme="b"> <a href="#page" data-role="button" data-icon="arrow-l" >退出</a>
+    <h1 id="name"></h1>
+  </div>
+  <div data-role="content"> <a href="#bspage2" data-role="button" data-transition="slidefade" id="business">业务定制</a> <a href="#bspage3" data-role="button" data-transition="slidefade" id="main2">主业务功能</a> <a href="#" data-role="button" data-transition="slidefade" id="query">统计查询</a> <a href="#bspage5" data-role="button" data-transition="slidefade" id="per">人员定制</a> </div>
+  <div data-role="footer">
+    <h1></h1>
+  </div>
+</div>
+<!--业务定制-------->
+<div data-role="page" id="bspage2">
+  <div data-role="header" data-theme="b"><a href="#bspage1" data-role="button" data-icon="arrow-l">返回</a>
+    <h1 id="name">业务定制</h1>
+  </div>
+  <div data-role="content">
+    <input type="text" data-clear-btn="true" name="text-3" id="allnum" placeholder="预约总数">
+    <input type="text" data-clear-btn="true" name="text-3" id="roomnum" placeholder="房间预约数">
+    <input type="text" data-clear-btn="true" name="text-3" id="hallnum" placeholder="大堂预约数">
+    <a data-role="button" data-transition="slidefade" id="run">执行</a> <a href="#bspage1" data-role="button" data-transition="slidefade" >取消</a> </div>
+  <div data-role="footer">
+    <h1></h1>
+  </div>
+</div>
+<!----------------------------------------------主业务功能-------------------------------------->
+<div data-role="page" id="bspage3">
+  <div data-role="header" data-theme="b"><a href="#bspage1" data-role="button" data-icon="arrow-l">返回</a>
+    <h1 id="repatename">主业务功能</h1>
+  </div>
+  <div data-role="content">
+    <p align="center">目前已预约总数：<font style="font-size:20px; color:#FF0000;" id="mainno">0</font></p>
+    <p align="center"><font style="font-size:80px; color:#FF0000;" id="currentNo">0</font></p>
+    <div align="center"> <a href="#" data-role="button"  id="btn_pre">上一位</a> <a href="#" data-role="button" id="btn_next">下一位</a> </div>
+    <input type="text" data-clear-btn="true" name="text-3" id="number" placeholder="请输入号码">
+    <a href="#" data-role="button"  id="btn_set">设置</a> <a href="#" data-role="button" id="btn_broadcast">广播叫号</a> </div>
+  <div data-role="footer">
+    <h1></h1>
+  </div>
+</div>
+<!-----------------------------------------------统计查询----------------------------------------------->
+
+<div data-role="page" id="demo-page" data-title="Inbox" data-url="demo-page" >
+  <div data-role="header" data-position="fixed" data-theme="b">
+    <h1>统计查询</h1>
+    <a href="#bspage1" data-role="button" data-icon="arrow-l">返回</a> <a href="#bspage1" class="delete" id="delete">删除所有</a> </div>
+  <div role="main" class="ui-content">
+    <ul id="list" class="touch" data-role="listview" data-icon="false" data-split-icon="delete">
+      <li> <a href="#demo-mail">
+        <h3 id="a1"></h3>
+        <p class="topic">预约号：<strong><font style="color:#FF0000;"id="b1"></font></strong></p>
+        <p class="ui-li-aside" id="c1"></p>
+        </a> </li>
+      <li> <a href="#demo-mail">
+        <h3 id="a2"></h3>
+        <p class="topic">预约号：<strong><font style="color:#FF0000;"id="b2"></font></strong></p>
+        <p class="ui-li-aside" id="c2"></p>
+        </a> </li>
+      <li> <a href="#demo-mail">
+        <h3 id="a3"></h3>
+        <p class="topic">预约号：<strong><font style="color:#FF0000;"id="b3"></font></strong></p>
+        <p class="ui-li-aside" id="c3"></p>
+        </a> </li>
+      <li> <a href="#demo-mail">
+        <h3 id="a4"></h3>
+        <p class="topic">预约号：<strong><font style="color:#FF0000;"id="b4"></font></strong></p>
+        <p class="ui-li-aside" id="c4"></p>
+        </a> </li>
+      <li> <a href="#demo-mail">
+        <h3 id="a5"></h3>
+        <p class="topic">预约号：<strong><font style="color:#FF0000;"id="b5"></font></strong></p>
+        <p class="ui-li-aside" id="c5"></p>
+        </a> </li>
+      <li> <a href="#demo-mail">
+        <h3 id="a6"></h3>
+        <p class="topic">预约号：<strong><font style="color:#FF0000;"id="b6"></font></strong></p>
+        <p class="ui-li-aside" id="c6"></p>
+        </a> </li>
+      <li> <a href="#demo-mail">
+        <h3 id="a7"></h3>
+        <p class="topic">预约号：<strong><font style="color:#FF0000;"id="b7"></font></strong></p>
+        <p class="ui-li-aside" id="c7"></p>
+        </a> </li>
+      <li> <a href="#demo-mail">
+        <h3 id="a8"></h3>
+        <p class="topic">预约号：<strong><font style="color:#FF0000;"id="b8"></font></strong></p>
+        <p class="ui-li-aside" id="c8"></p>
+        </a> </li>
+      <li> <a href="#demo-mail">
+        <h3 id="a9"></h3>
+        <p class="topic">预约号：<strong><font style="color:#FF0000;"id="b9"></font></strong></p>
+        <p class="ui-li-aside" id="c9"></p>
+        </a> </li>
+      <li> <a href="#demo-mail">
+        <h3 id="a10"></h3>
+        <p class="topic">预约号：<strong><font style="color:#FF0000;"id="b10"></font></strong></p>
+        <p class="ui-li-aside" id="c10"></p>
+        </a> </li>
+      <li> <a href="#demo-mail">
+        <h3 id="a11"></h3>
+        <p class="topic">预约号：<strong><font style="color:#FF0000;"id="b11"></font></strong></p>
+        <p class="ui-li-aside" id="c11"></p>
+        </a> </li>
+      <li> <a href="#demo-mail">
+        <h3 id="a12"></h3>
+        <p class="topic">预约号：<strong><font style="color:#FF0000;"id="b12"></font></strong></p>
+        <p class="ui-li-aside" id="c12"></p>
+        </a> </li>
+    </ul>
+  </div>
+</div>
+<!-----------------------------------------------人员定制---------------------------------------------->
+<div data-role="page" id="bspage5">
+  <div data-role="header" data-theme="b"><a href="#bspage1" data-role="button" data-icon="arrow-l">返回</a>
+    <h1>人员定制</h1>
+  </div>
+  <div data-role="content">
+    <form>
+      <input type="text" data-clear-btn="true" name="text-3" id="zcusername" placeholder="用户名">
+      <input type="password" data-clear-btn="true" name="text-3" id="zcpassword" placeholder="密码">
+      <input type="password" data-clear-btn="true" name="text-3" id="zcpassword2" placeholder="确认密码">
+      <fieldset data-role="controlgroup" data-iconpos="right">
+        <legend>选择权限：</legend>
+        <input type="radio" name="radio-choice-w" id="radio-choice-w-6a" value="1" checked="checked">
+        <label for="radio-choice-w-6a">叫号</label>
+        <input type="radio" name="radio-choice-w" id="radio-choice-w-6b" value="2">
+        <label for="radio-choice-w-6b">预约管理</label>
+      </fieldset>
+    </form>
+    <a href="#bspage1" data-role="button" data-transition="slidefade" id="ok">确定</a> <a href="#bspage1" data-role="button" data-transition="slidefade" >取消</a> </div>
+  <div data-role="footer">
+    <h1></h1>
+  </div>
+</div>
+<!---------------------------------------------登陆-一般用户----------------------------------------->
+<div data-role="page" id="uspage1">
+  <div data-role="header" data-theme="b"><a href="#page" data-role="button" data-icon="arrow-l">退出</a>
+    <h1 ><font id="usname"></font>的主页</h1>
+  </div>
+  <div data-role="content">
+    <p align="center"><img src="images/foodweb15.jpg" /></p>
+    <a href="#uspage2" data-role="button" data-transition="slidefade" id="order">预约</a> <a href="#myorder2" data-role="button" data-transition="slidefade" id="usindex">我的预约</a> </div>
+  <div data-role="footer">
+    <h1></h1>
+  </div>
+</div>
+<!---------------------------------------------用户主页-全部----------------------------------------->
+<div data-role="page" id="uspage2">
+  <div data-role="header" data-theme="b"><a href="#uspage1" data-role="button" data-icon="home">主页</a>
+    <h1 >预约主页</h1>
+  </div>
+  <div data-role="content">
+    <h1> 请选择你喜欢的餐厅<img src="images/like.png" /></h1>
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#" class="ui-btn-active">全部</a></li>
+        <li><a href="#p2">评价</a></li>
+        <li><a href="#p3">价钱</a></li>
+      </ul>
+    </div>
+    <input data-type="search" id="filterControlgroup-input" value="" placeholder="关键字">
+    <ul data-role="listview" data-inset="true" >
+      <li><a href="#information" data-role="button" data-transition="slidefade"><img src="images/c2.jpg"/>
+        <h3 >
+          <button id="1"></button>
+        </h3>
+        </a></li>
+      <li><a href="#information" data-role="button" data-transition="slidefade"> <img src="images/p2.jpg"/>
+        <h3 >
+          <button id="2"></button>
+        </h3>
+        </a></li>
+      <li><a href="#information" data-role="button" data-transition="slidefade"> <img src="images/p3.jpg"/>
+        <h3 >
+          <button id="3"></button>
+        </h3>
+        </a></li>
+      <li><a href="#information" data-role="button" data-transition="slidefade"> <img src="images/p4.jpg"/>
+        <h3 >
+          <button id="4"></button>
+        </h3>
+        </a></li>
+      <li><a href="#information" data-role="button" data-transition="slidefade"> <img src="images/p5.jpg"/>
+        <h3 >
+          <button id="5"></button>
+        </h3>
+        </a></li>
+    </ul>
+  </div>
+</div>
+<div data-role="footer" data-position="fixed">
+  <h1></h1>
+</div>
+</div>
+<!---------------------------------------------用户主页-评价------------------------------------------------>
+<div data-role="page" id="p2">
+  <div data-role="header" data-theme="b"><a href="#uspage2" data-role="button" data-icon="arrow-l">返回</a>
+    <h1 id="zyusname"></h1>
+  </div>
+  <div data-role="content">
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#uspage2" >全部</a></li>
+        <li><a href="#" class="ui-btn-active">评价</a></li>
+        <li><a href="#p3">价钱</a></li>
+      </ul>
+    </div>
+    <form>
+      <input data-type="search" id="filterControlgroup-input" value="" placeholder="关键字">
+    </form>
+    <p >点击进入预约填写</p>
+    <div data-role="controlgroup" data-filter="true" data-input="#filterControlgroup-input"> <a href="#uspage2" class="ui-btn ui-shadow ui-corner-all" id="usclick" class="1">1.李记牛杂</a> <a href="#uspage3" class="ui-btn ui-shadow ui-corner-all" id="usclick" class="2">2.枫阁餐厅</a> <a href="#uspage4" class="ui-btn ui-shadow ui-corner-all" data-filtertext="some text" id="usclick" class="3">3.马莉餐厅</a> <a href="#uspage5" class="ui-btn ui-shadow ui-corner-all" id="usclick" class="4">4.白虎自助餐厅</a> <a href="#uspage6" class="ui-btn ui-shadow ui-corner-all" id="usclick" class="5">5.江户日本料理</a> <a href="#uspage6" class="ui-btn ui-shadow ui-corner-all" id="usclick" class="5">6.绿的梦时尚酷饮</a> </div>
+  </div>
+</div>
+<div data-role="footer">
+  <h1></h1>
+</div>
+</div>
+<!---------------------------------------------用户主页-价钱-------------------------------------------------->
+<div data-role="page" id="p3">
+  <div data-role="header" data-theme="b"><a href="#uspage2" data-role="button" data-icon="arrow-l">返回</a>
+    <h1 id="zyusname"></h1>
+  </div>
+  <div data-role="content">
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#uspage2" >全部</a></li>
+        <li><a href="#p2" >评价</a></li>
+        <li><a href="#" class="ui-btn-active">价钱</a></li>
+      </ul>
+    </div>
+    <form>
+      <input data-type="search" id="filterControlgroup-input" value="" placeholder="关键字">
+    </form>
+    <p >点击进入预约填写</p>
+    <div data-role="controlgroup" data-filter="true" data-input="#filterControlgroup-input"> <a href="#uspage2" class="ui-btn ui-shadow ui-corner-all" id="click" class="1">1.广东机电职业技术学院第一食堂</a> <a href="#uspage3" class="ui-btn ui-shadow ui-corner-all" id="click" class="2">2.广东机电职业技术学院第二食堂</a> <a href="#uspage4" class="ui-btn ui-shadow ui-corner-all" data-filtertext="some text" id="click" class="3">3.广东机电职业技术学院第三食堂</a> <a href="#uspage5" class="ui-btn ui-shadow ui-corner-all" id="click" class="4">马莉餐厅</a> <a href="#uspage6" class="ui-btn ui-shadow ui-corner-all" id="click" class="5">饺子王</a> </div>
+  </div>
+</div>
+<div data-role="footer">
+  <h1></h1>
+</div>
+</div>
+<!----------------------------------------------预约信息------------------------------------------->
+<div data-role="page" id="information">
+  <div data-role="header" data-theme="b"> <a href="#uspage2" data-role="button" data-icon="arrow-l" id="return1">返回</a>
+    <h1 id="infousname2">预约信息</h1>
+  </div>
+  <div data-role="content">
+    <div class="ui-grid-a" id="contact_infos">
+      <div class="ui-block-a">
+        <h1><font id="font"></font></h1>
+        <p>可供预约号总数：<font  style="font-size:20px; color:#FF0000;" id="room">预约已满</font></p>
+        <p>房间可供预约数：<font style="font-size:20px; color:#FF0000;" id="yyroomnum"></font></p>
+        <p>大堂可供预约数：<font style="font-size:20px; color:#FF0000;" id="yyhallnum"></font></p>
+        <p>目前已预约总数：<font style="font-size:20px; color:#FF0000;" id="num"></font></p>
+        <p>目前叫号号码：<font style="font-size:20px; color:#FF0000;" id="yynum">请耐心等待...</font></p>
+        <p><a href="#restau" rel="external" data-role="button" id="chakan">查看详细信息</a></p>
+      </div>
+      <div class="ui-block-b"> <img src="images/foodweb09.jpg"alt="plan jeanette"/> </div>
+    </div>
+    <!-- /grid-a -->
+    <div id="contact_buttons">
+      <form>
+        <fieldset data-role="controlgroup" data-iconpos="right">
+          <input type="radio" name="radio-choice" id="radio-choice-w-6a" value="1" checked="checked">
+          <label for="radio-choice-w-6a">房间预约</label>
+          <input type="radio" name="radio-choice" id="radio-choice-w-6b" value="2">
+          <label for="radio-choice-w-6b">大堂预约</label>
+        </fieldset>
+      </form>
+      <a href="#myorder2" data-role="button" data-transition="slidefade" id="queding">确定</a> <a href="#uspage2" data-role="button" data-transition="slidefade" >取消</a> </div>
+  </div>
+  <div data-role="footer">
+    <h1></h1>
+  </div>
+</div>
+<!----------------------------------------------我的预约------------------------------------------->
+<div data-role="page" id="myorder2">
+  <div data-role="header" data-theme="b"><a href="#uspage1" data-role="button" data-icon="arrow-l">返回</a>
+    <h2 id="zyusname">我的预约</h2>
+  </div>
+  <div data-role="content">
+    <h2>目前叫号号码：<font style="font-size:20px; color:#FF0000;" id="yynum2">请耐心等待...</font></h2>
+    <p><font style="font-size:20px;" id="myyuyue">暂无预约</font> <font style="font-size:16px; float:right" id="mydate"></font> </p>
+  </div>
+  <div data-role="footer">
+    <h1></h1>
+  </div>
+</div>
+<!----------------------------------------------详细信息------------------------------------------->
+<div id="restau" data-role="page" data-add-back-btn="true" >
+  <div data-role="header" data-theme="b">
+    <h1 id="campany1"></h1>
+    <a href="login.html#bspage1" data-rel="back" data-icon="carat-l" id="back">返回</a> <a href="#" data-icon="back" id="refresh">刷新</a> </div>
+  <div data-role="content">
+    <div class="ui-grid-a" id="restau_infos">
+      <div class="ui-block-a">
+        <h1 id="campany2"></h1>
+        <p><strong>餐厅位于钟落潭高校院</strong></p>
+        <p> 特色菜单：</p>
+        <ul>
+          <li> 浓情巧克力奶昔</li>
+          <li> 提拉米苏</li>
+          <li> 布朗尼 </li>
+        </ul>
+      </div>
+      <div class="ui-block-b">
+        <p><img src="images/2012052116450260.gif" alt="jeannette photo"/></p>
+      </div>
+    </div>
+    <!-- /grid-a -->
+    
+    <hr/>
+    <div id="notation">
+      <form>
+        <label for="select-choice-0" class="select">
+        <p>评价：</p>
+        </label>
+        <select name="note_utilisateur" id="note_utilisateur" data-native-menu="false" data-theme="c" >
+          <option value="1" class="one">很好</option>
+          <option value="2" class="two">好</option>
+          <option value="3" class="three">一般</option>
+          <option value="4" class="four">很差</option>
+        </select>
+        <textarea name="textarea-1" id="textarea-1"  placeholder="发表您的评论"></textarea>
+        <input type="button" value="发表" id="submit">
+      </form>
+      <div role="main" class="ui-content">
+        <p>用户点评：</p>
+        <ul id="list" class="touch" data-role="listview" data-icon="false" >
+          <li>
+            <p ><strong><font id="d1"></font></strong>&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:#F00" id="e1"></font></p>
+            <p id="f1"></p>
+            <p class="ui-li-aside" id="g1"></p>
+          </li>
+          <li>
+            <p ><strong><font id="d2"></font></strong>&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:#F00" id="e2"></font></p>
+            <p id="f2"></p>
+            <p class="ui-li-aside" id="g2"></p>
+          </li>
+          <li>
+            <p ><strong><font id="d3"></font></strong>&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:#F00" id="e3"></font></p>
+            <p id="f3"></p>
+            <p class="ui-li-aside" id="g3"></p>
+          </li>
+          <li>
+            <p ><strong><font id="d4"></font></strong>&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:#F00" id="e4"></font></p>
+            <p id="f4"></p>
+            <p class="ui-li-aside" id="g4"></p>
+          </li>
+          <li>
+            <p ><strong><font id="d5"></font></strong>&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:#F00" id="e5"></font></p>
+            <p id="f5"></p>
+            <p class="ui-li-aside" id="g5"></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
